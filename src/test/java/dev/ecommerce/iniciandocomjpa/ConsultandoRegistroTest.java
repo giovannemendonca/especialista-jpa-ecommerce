@@ -1,37 +1,29 @@
 package dev.ecommerce.iniciandocomjpa;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import dev.ecommerce.EntityManagerTest;
+import dev.ecommerce.model.Produto;
+import org.junit.Assert;
+import org.junit.Test;
 
-public class ConsultandoRegistroTest {
+public class ConsultandoRegistroTest extends EntityManagerTest {
 
-    private static EntityManagerFactory entityManagerFactory;
+    @Test
+    public void buscarPorIndentificador() {
+        Produto produto = entityManager.find(Produto.class, 1);
 
-    private EntityManager entityManager;
-
-    @BeforeClass
-    public static void setUpBeforeClass() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("Ecommerce-PU");
+        Assert.assertNotNull(produto);
+        Assert.assertEquals("Kindle", produto.getNome());
     }
 
-    @AfterClass
-    public static void tearDownAfterClass() {
-        entityManagerFactory.close();
+    @Test
+    public void atualizarReferencia(){
+        Produto produto = entityManager.find(Produto.class,1);
+        produto.setNome("Microfone Samson");
+
+        entityManager.refresh(produto);
+
+        Assert.assertEquals("Kindle", produto.getNome());
     }
 
-    @Before
-    public void setUp() {
-        entityManager = entityManagerFactory.createEntityManager();
-    }
-
-    @After
-    public void tearDown() {
-        entityManager.close();
-    }
 
 }

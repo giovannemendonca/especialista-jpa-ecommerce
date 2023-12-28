@@ -1,6 +1,5 @@
 package dev.ecommerce.util;
 
-import dev.ecommerce.model.Produto;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -10,8 +9,6 @@ public class IniciarUnidadeDePersistencia {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Ecommerce-PU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-        Produto produto = entityManager.find(Produto.class, 1);
 
         entityManager.close();
         entityManagerFactory.close();
