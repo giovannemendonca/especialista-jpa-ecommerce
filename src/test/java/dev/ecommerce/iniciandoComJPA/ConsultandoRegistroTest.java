@@ -1,4 +1,4 @@
-package dev.ecommerce.iniciandocomjpa;
+package dev.ecommerce.iniciandoComJPA;
 
 import dev.ecommerce.EntityManagerTest;
 import dev.ecommerce.model.Produto;
