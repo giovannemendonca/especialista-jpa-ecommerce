@@ -30,6 +30,26 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 
 
     @Test
+    public void impedirOperacaoComBancoDeDados() {
+
+        Produto produto = entityManager.find(Produto.class, 1);
+
+        entityManager.detach(produto); // o entityManager deixar de gerenciar
+
+        entityManager.getTransaction().begin();
+        produto.setNome("Kindle Paperwhite 2ª Geração");
+        entityManager.getTransaction().commit();
+
+        entityManager.clear();
+
+        Produto produtoVerificado = entityManager.find(Produto.class, produto.getId());
+
+        Assert.assertEquals("Kindle", produtoVerificado.getNome());
+    }
+
+
+
+    @Test
     public void inserirOPrimeiroObjeto() {
 
         Produto produto = new Produto();
