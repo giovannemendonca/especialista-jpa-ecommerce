@@ -6,18 +6,17 @@ import jakarta.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@Entity
+@Entity(name = "produto")
 public class Produto {
-
 
     @Id
     private Integer id;
 
     private String nome;
 
-    private String descricao;
-
     private BigDecimal preco;
+
+    private String descricao;
 
 
     public Integer getId() {
