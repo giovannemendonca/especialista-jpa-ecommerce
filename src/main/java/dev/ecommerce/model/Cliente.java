@@ -1,7 +1,6 @@
 package dev.ecommerce.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,12 +11,17 @@ import lombok.Setter;
 @Entity(name = "cliente")
 public class Cliente {
 
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     @Id
     private Integer id;
 
+    @Column(name = "nome")
     private String nome;
 
+    @Column(name = "sexo")
+    @Enumerated(EnumType.STRING)
     private SexoCliente sexo;
 
 }

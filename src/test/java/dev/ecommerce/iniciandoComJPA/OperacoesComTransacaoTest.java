@@ -54,7 +54,6 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 
         Produto produto = new Produto();
 
-        produto.setId(2);
         produto.setNome("Câmera Canon");
         produto.setDescricao("A melhor definição para suas fotos");
         produto.setPreco(new BigDecimal(5000));
@@ -131,7 +130,6 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 
         Produto produto = new Produto();
 
-        produto.setId(4);
         produto.setNome("Microfone Rode Videmic");
         produto.setDescricao("A melhor qualidade de som.");
         produto.setPreco(new BigDecimal(1000));
@@ -152,7 +150,6 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 
         Produto produtoPesist = new Produto();
 
-        produtoPesist.setId(5);
         produtoPesist.setNome("Smartphone One Plus");
         produtoPesist.setDescricao("O processador mais rápido.");
         produtoPesist.setPreco(new BigDecimal(2000));
@@ -171,7 +168,6 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 
         Produto produtoMerge = new Produto();
 
-        produtoMerge.setId(6);
         produtoMerge.setNome("Notebook Dell");
         produtoMerge.setDescricao("O melhor da categoria");
         produtoMerge.setPreco(new BigDecimal(5000));

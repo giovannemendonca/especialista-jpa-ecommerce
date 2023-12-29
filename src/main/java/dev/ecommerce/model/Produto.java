@@ -1,7 +1,6 @@
 package dev.ecommerce.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,14 +14,19 @@ import java.util.Objects;
 @Entity(name = "produto")
 public class Produto {
 
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     @Id
     private Integer id;
 
+    @Column(name = "nome")
     private String nome;
 
+    @Column(name = "preco")
     private BigDecimal preco;
 
+    @Column(name = "descricao")
     private String descricao;
 
 }
