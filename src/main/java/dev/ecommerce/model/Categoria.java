@@ -1,5 +1,6 @@
 package dev.ecommerce.model;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.EqualsAndHashCode;
@@ -9,15 +10,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity(name = "cliente")
-public class Cliente {
+@Entity(name = "categoria")
+public class Categoria {
 
-    @EqualsAndHashCode.Include
     @Id
+    @EqualsAndHashCode.Include
     private Integer id;
 
     private String nome;
 
-    private SexoCliente sexo;
-
+    private Integer categoriaPaiId;
 }

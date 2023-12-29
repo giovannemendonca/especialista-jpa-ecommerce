@@ -6,18 +6,20 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity(name = "cliente")
-public class Cliente {
+@Entity(name = "pagamento_boleto")
+public class PagamentoBoleto {
 
     @EqualsAndHashCode.Include
     @Id
     private Integer id;
 
-    private String nome;
+    private Integer pedidoId;
 
-    private SexoCliente sexo;
+    private StatusPagamento status;
+
+    private String codigoBarras;
 
 }

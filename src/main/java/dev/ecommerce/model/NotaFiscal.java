@@ -6,18 +6,22 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
+import java.util.Date;
+
 @Setter
+@Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity(name = "cliente")
-public class Cliente {
+@Entity(name = "nota_fiscal")
+public class NotaFiscal {
 
     @EqualsAndHashCode.Include
     @Id
     private Integer id;
 
-    private String nome;
+    private Integer pedidoId;
 
-    private SexoCliente sexo;
+    private String xml;
+
+    private Date dataEmissao;
 
 }

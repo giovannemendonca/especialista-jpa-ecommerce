@@ -6,18 +6,27 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 @Setter
+@Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Entity(name = "cliente")
-public class Cliente {
+@Entity(name = "pedido")
+public class Pedido {
 
     @EqualsAndHashCode.Include
     @Id
     private Integer id;
 
-    private String nome;
+    private LocalDateTime dataPedido;
 
-    private SexoCliente sexo;
+    private LocalDateTime dataConclusao;
+
+    private Integer notaFiscalId;
+
+    private BigDecimal total;
+
+    private StatusPedido status;
 
 }
