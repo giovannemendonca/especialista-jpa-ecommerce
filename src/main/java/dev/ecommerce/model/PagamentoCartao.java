@@ -17,7 +17,7 @@ public class PagamentoCartao {
     @Id
     private Integer id;
 
-    @OneToOne
+    @OneToOne(optional = false)
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
