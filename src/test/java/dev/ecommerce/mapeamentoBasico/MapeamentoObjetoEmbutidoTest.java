@@ -1,6 +1,7 @@
 package dev.ecommerce.mapeamentoBasico;
 
 import dev.ecommerce.EntityManagerTest;
+import dev.ecommerce.model.Cliente;
 import dev.ecommerce.model.EnderecoEntregaPedido;
 import dev.ecommerce.model.Pedido;
 import dev.ecommerce.model.StatusPedido;
@@ -15,6 +16,9 @@ public class MapeamentoObjetoEmbutidoTest extends EntityManagerTest {
     @Test
     public void analisarMapementoObjetoEmbutido() {
 
+        Cliente cliente = entityManager.find(Cliente.class,1);
+
+
         EnderecoEntregaPedido enderecoEntregaPedido = new EnderecoEntregaPedido();
         enderecoEntregaPedido.setCep("00000-000");
         enderecoEntregaPedido.setLogradouro("Rua das Laranjeiras");
@@ -28,6 +32,7 @@ public class MapeamentoObjetoEmbutidoTest extends EntityManagerTest {
         pedido.setTotal(BigDecimal.valueOf(100.0));
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setEnderecoEntrega(enderecoEntregaPedido);
+        pedido.setCliente(cliente);
 
 
         entityManager.getTransaction().begin();
