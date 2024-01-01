@@ -1,9 +1,8 @@
 package dev.ecommerce.relacionamentos;
 
 import dev.ecommerce.EntityManagerTest;
-import dev.ecommerce.model.Cliente;
-import dev.ecommerce.model.Pedido;
-import dev.ecommerce.model.StatusPedido;
+import dev.ecommerce.model.*;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -31,8 +30,44 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
         Pedido pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
 
         System.out.println("Pedido: " + pedidoVerificacao.getCliente().getNome());
-        
 
     }
+
+    @Test
+    public void verificandoRelacionamentoItemPedido() {
+
+        Cliente cliente = entityManager.find(Cliente.class, 1);
+        Produto produto = entityManager.find(Produto.class, 1);
+
+        Pedido pedido = new Pedido();
+        pedido.setCliente(cliente);
+        pedido.setStatus(StatusPedido.AGUARDANDO);
+        pedido.setTotal(BigDecimal.valueOf(10));
+        pedido.setDataPedido(LocalDateTime.now());
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(pedido);
+        entityManager.getTransaction().commit();
+        entityManager.clear();
+
+        ItemPedido itemPedido = new ItemPedido();
+
+        itemPedido.setPedido(pedido);
+        itemPedido.setProduto(produto);
+        itemPedido.setQuantidade(2);
+        itemPedido.setPrecoProduto(produto.getPreco());
+
+        entityManager.getTransaction().begin();
+        entityManager.persist(itemPedido);
+        entityManager.getTransaction().commit();
+        entityManager.clear();
+
+        ItemPedido itemVerificado = entityManager.find(ItemPedido.class, itemPedido.getId());
+
+
+        Assert.assertNotNull(itemVerificado);
+
+    }
+
 
 }
