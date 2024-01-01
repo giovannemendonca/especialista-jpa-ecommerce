@@ -21,18 +21,11 @@ public class Pedido {
     @Id
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
-
     @Column(name = "data_pedido")
     private LocalDateTime dataPedido;
 
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
-
-    @Column(name = "nota_fiscal_id")
-    private Integer notaFiscalId;
 
     @Column(name = "total")
     private BigDecimal total;
@@ -44,7 +37,18 @@ public class Pedido {
     @Embedded
     private EnderecoEntregaPedido enderecoEntrega;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
+
+    @OneToOne(mappedBy = "pedido")
+    private PagamentoCartao pagamento;
+
+    @OneToOne(mappedBy = "pedido")
+    private NotaFiscal notaFiscal;
+
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
+
 
 }
