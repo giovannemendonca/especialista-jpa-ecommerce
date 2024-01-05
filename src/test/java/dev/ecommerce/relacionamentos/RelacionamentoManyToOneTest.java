@@ -20,7 +20,7 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
         pedido.setCliente(cliente);
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(BigDecimal.valueOf(10));
-        pedido.setDataPedido(LocalDateTime.now());
+        pedido.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         entityManager.persist(pedido);
@@ -43,7 +43,7 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
         pedido.setCliente(cliente);
         pedido.setStatus(StatusPedido.AGUARDANDO);
         pedido.setTotal(BigDecimal.valueOf(10));
-        pedido.setDataPedido(LocalDateTime.now());
+        pedido.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         entityManager.persist(pedido);

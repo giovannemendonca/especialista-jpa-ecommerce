@@ -1,5 +1,6 @@
 package dev.ecommerce.model;
 
+import dev.ecommerce.listener.GenericoListener;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import java.util.List;
 @Setter
 @Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EntityListeners({GenericoListener.class})
 @Entity(name = "produto")
 public class Produto {
 
